@@ -320,7 +320,7 @@
                 </p>
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/jcr3/jcr3.github.io" style="color: var(--bg-color);">Site Source Code</a>
                 <p>
-                    © 2025 JC Redmond III
+                    © 2026 JC Redmond III
                 </p>
             </div>
             

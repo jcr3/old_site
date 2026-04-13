@@ -17,7 +17,7 @@
     var canvasWidth = window.innerWidth;
     var canvasHeight = window.innerHeight;
 
-    var mousePosScreen = new THREE.Vector3();
+    var mousePosScreen = new THREE.Vector2();
     var mousePos3D = new THREE.Vector3(0, -1.25, 1);
 
     const halftoneParams = {
@@ -33,7 +33,6 @@
 		disable: false
 	};
 
-    let dampingFactor = 0.008;
     const rotationFactor = 0.1;
     const autoMoveSpeed = 2;
     
@@ -41,12 +40,6 @@
 
     let delta = 0;
     let interval = 1/12; // restrict to 12 fps
-
-    let lastFrameData = {
-        // store last frame data so can have damping if mouse reenters page at different point
-        lightPos: mousePos3D,
-        meshRotation: new THREE.Vector2(0,0)
-    }
 
     // THREE JS SETUP
 
@@ -57,6 +50,15 @@
 
     renderer.setSize( canvasWidth, canvasHeight );
     camera.position.z = 5;
+
+    const raycaster = new THREE.Raycaster();
+    const mouseNDC = new THREE.Vector2();
+    const mouseWorld = new THREE.Vector3();
+
+    const rotation = new THREE.Vector2(0, 0);
+    const velocity = new THREE.Vector2(0, 0);
+    const stiffness = 12;  // feel free to tweak
+    const damping = 8;
 
     // LOAD MODEL
 
@@ -102,18 +104,6 @@
 
 
     // FUNCTIONS
-
-    function screenTo3D(posScreen: THREE.Vector3, pos3D: THREE.Vector3): THREE.Vector3 {
-        // convert screen position to 3D position
-        posScreen.unproject( camera );
-        posScreen.sub( camera.position ).normalize();
-
-        var distance = ( 1 - camera.position.z ) / posScreen.z;
-        
-        pos3D.copy( camera.position ).add( posScreen.multiplyScalar(distance));
-        return pos3D;
-    }
-
     
     function resizeMascot(width: number) {
         if (canvasWidth < 500) spesGeo.scale.set(width / 500, width / 500, width / 500);
@@ -132,10 +122,16 @@
         mousePosScreen.set(
             horizontalScale * positionNoise(t * autoMoveSpeed, 0),
             verticalScale * positionNoise(0, t * autoMoveSpeed),
-            0.5,
+            // 0.5,
         );
 
-        mousePos3D = screenTo3D(mousePosScreen, mousePos3D);
+        raycaster.setFromCamera(mousePosScreen, camera);
+
+        mouseWorld
+            .copy(raycaster.ray.origin)
+            .add(raycaster.ray.direction.clone().multiplyScalar(5));
+
+        mousePos3D.copy(mouseWorld);
     }
     
 
@@ -144,17 +140,22 @@
     if ( matchMedia('(pointer:fine)').matches ) {
         // has a mouse
         document.addEventListener('mousemove', (e: MouseEvent) => {
-            mousePosScreen.set(
-                ( e.clientX / canvasWidth ) * 2 - 1,
-                - ( e.clientY / canvasHeight ) * 2 + 1,
-                0.5,
+            mouseNDC.set(
+                (e.clientX / canvasWidth) * 2 - 1,
+                -(e.clientY / canvasHeight) * 2 + 1
             );
-            mousePos3D = screenTo3D(mousePosScreen, mousePos3D);
+
+            raycaster.setFromCamera(mouseNDC, camera);
+
+            mouseWorld
+                .copy(raycaster.ray.origin)
+                .add(raycaster.ray.direction.clone().multiplyScalar(5));
+
+            mousePos3D.copy(mouseWorld);
         }, false);
     }
     else {
         // touch screen
-        dampingFactor = 0;
         let t = 0;
         const positionNoise = makeNoise2D();
         setInterval(() => {
@@ -202,55 +203,49 @@
             const deltaTime = clock.getDelta();
             delta += deltaTime;
 
-            // need to approximate derivatives to add damping
-            const meshDerivative = new THREE.Vector2(
-                (mousePos3D.x * rotationFactor - lastFrameData.meshRotation.x) / deltaTime,
-                (mousePos3D.y * rotationFactor - lastFrameData.meshRotation.y) / deltaTime
-            );
-            const meshRotation = new THREE.Vector2(
-                mousePos3D.x * rotationFactor - dampingFactor * meshDerivative.x,
-                mousePos3D.y * rotationFactor - dampingFactor * meshDerivative.y
+            const target = new THREE.Vector2(
+                mousePos3D.x * rotationFactor,
+                mousePos3D.y * rotationFactor
             );
 
-            // cap rotation to prevent glitches
-            if (meshRotation.x > maxMascotRotation) meshRotation.x = maxMascotRotation;
-            if (meshRotation.x < -maxMascotRotation) meshRotation.x = -maxMascotRotation;
-            if (meshRotation.y > maxMascotRotation) meshRotation.y = maxMascotRotation;
-            if (meshRotation.y < -maxMascotRotation) meshRotation.y = -maxMascotRotation;
+            // spring physics
+            const force = new THREE.Vector2(
+                (target.x - rotation.x) * stiffness,
+                (target.y - rotation.y) * stiffness
+            );
 
-            // not exactly sure why but flipping like this makes it rotate towards the mouse
+            velocity.x += force.x * deltaTime;
+            velocity.y += force.y * deltaTime;
+
+            // damping
+            velocity.multiplyScalar(Math.exp(-damping * deltaTime));
+
+            // integrate
+            rotation.x += velocity.x * deltaTime;
+            rotation.y += velocity.y * deltaTime;
+
+            // clamp
+            rotation.x = THREE.MathUtils.clamp(rotation.x, -maxMascotRotation, maxMascotRotation);
+            rotation.y = THREE.MathUtils.clamp(rotation.y, -maxMascotRotation, maxMascotRotation);
+
+            // apply
+            spesGeo.rotation.x = rotation.y;
+            spesGeo.rotation.y = -rotation.x;
             spesGeo.rotation.z -= deltaTime * 1;
-            spesGeo.rotation.x = meshRotation.y;
-            spesGeo.rotation.y = - meshRotation.x;
 
-            const lightDerivative = new THREE.Vector3(
-                (mousePos3D.x - lastFrameData.lightPos.x) / deltaTime,
-                (mousePos3D.y - lastFrameData.lightPos.y) / deltaTime,
-                (mousePos3D.z - lastFrameData.lightPos.z) / deltaTime
+            light.position.set(
+                mousePos3D.x,
+                mousePos3D.y,
+                mousePos3D.z + 1
             );
-            const lightPos = new THREE.Vector3(
-                // damper
-                mousePos3D.x - dampingFactor * lightDerivative.x,
-                mousePos3D.y - dampingFactor * lightDerivative.y,
-                mousePos3D.z - dampingFactor * lightDerivative.z,
-            );
-
-            light.position.set( lightPos.x, lightPos.y, lightPos.z );
 
             if ( delta > interval ) { // restrict frame rate to 'interval'
-
-                renderer.render( scene, camera );
-                composer.render( deltaTime );
+                composer.render();
                 // add some noise
                 halftonePass.uniforms.scatter.value = Math.random() * 0.5 + 0.25;
 
                 delta = delta % interval;
             }
-            
-            lastFrameData = {
-                lightPos: lightPos,
-                meshRotation: meshRotation
-            };
         }
 
         renderer.setAnimationLoop( animate );
