@@ -90,15 +90,17 @@
         const canvas = <HTMLCanvasElement> document.getElementById("metaballs-canvas");
         if (canvas == null) { console.log("No metaballs-canvas"); return; }
 
-        let resizeTimeout: number;
+        let resizeTimeout: ReturnType<typeof setTimeout>;
+
         window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                // dynamically resize
-                canvas.width = canvas.getBoundingClientRect().width;
-                canvas.height = canvas.getBoundingClientRect().height;
-                baseRadius = Math.max(800, canvas.width);
-            }, 100);
+        clearTimeout(resizeTimeout);
+
+        resizeTimeout = setTimeout(() => {
+            // dynamically resize
+            canvas.width = canvas.getBoundingClientRect().width;
+            canvas.height = canvas.getBoundingClientRect().height;
+            baseRadius = Math.max(800, canvas.width);
+        }, 100);
         });
         
         // get simensions of canvas from css size of element
