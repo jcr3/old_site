@@ -2,8 +2,6 @@
     import { onMounted } from 'vue';
     import { makeNoise3D } from 'fast-simplex-noise';
 
-    
-
     type Gradient = {
         radius: number,
         noiseOffset: number
@@ -92,12 +90,15 @@
         const canvas = <HTMLCanvasElement> document.getElementById("metaballs-canvas");
         if (canvas == null) { console.log("No metaballs-canvas"); return; }
 
+        let resizeTimeout: number;
         window.addEventListener('resize', () => {
-            // dynamically resize
-            canvas.width = canvas.getBoundingClientRect().width;
-            canvas.height = canvas.getBoundingClientRect().height;
-            
-            baseRadius = Math.max(800, canvas.width);
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // dynamically resize
+                canvas.width = canvas.getBoundingClientRect().width;
+                canvas.height = canvas.getBoundingClientRect().height;
+                baseRadius = Math.max(800, canvas.width);
+            }, 100);
         });
         
         // get simensions of canvas from css size of element
@@ -107,6 +108,7 @@
         let baseRadius = Math.max(800, canvas.width);
 
         const ctx = canvas.getContext("2d", {"willReadFrequently": true});
+        if (ctx) ctx.globalCompositeOperation = 'lighter';
 
         var gradients: Array<Gradient> = [];
         
@@ -121,13 +123,26 @@
         // include after image trail
         const scales = [1, 0.9, 0.7];//, 0.6, 0.5, 0.3];
 
+        let lastAccent = '';
+
+        function updateAccent() {
+            const val = getComputedStyle(document.documentElement)
+                .getPropertyValue('--accent-color');
+
+            if (val !== lastAccent) {
+                accentColor = hexToRGB(val);
+                lastAccent = val;
+            }
+        }
+
+        const rgba: number[] = [0, 0, 0, 0];
         function animate(t: number) {
             
             if (ctx == null) { console.log("No metaballs-canvas context"); return };
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            accentColor = hexToRGB(getComputedStyle(document.documentElement).getPropertyValue('--accent-color'));
+            updateAccent();
 
             if(mode == 0) colorSpread = 0;
 
@@ -152,51 +167,76 @@
                         colorBlendFactor * Math.min(Math.max(accentColor[1] + offset.y * colorSpread, 0), 255) + (1 - colorBlendFactor) * color[1],
                         colorBlendFactor * Math.min(Math.max(accentColor[2] + offset.z * colorSpread, 0), 255) + (1 - colorBlendFactor) * color[2],
                     ];
+                    rgba[0] = color[0];
+                    rgba[1] = color[1];
+                    rgba[2] = color[2];
+                    rgba[3] = (scale == scales[0]) ? scale : scale / 2;
 
                     drawGradient(
                         ctx,
                         x0,
                         y0,
                         gradient.radius * scaleOffset,
-                        [...color, (scale==scales[0])?scale:scale/2] // draw first one full opacity
+                        rgba
                     );
                 })
                 
             });
 
             // apply a threshold by opacity on all the graidents to get the metaballs effect
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const data = imageData.data;
 
-            // mode 1 standard
-            if (mode == 0) {
-                for (let i = 0; i < data.length; i += 4) {
-                    if (data[i + 3] < threshold * 255) {
-                        data[i + 3] = 0;
-                    }
-                    else data[i + 3] = 255;
+            // get image data once
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            // use 32-bit view for faster iteration
+            const buffer = new Uint32Array(imageData.data.buffer);
+
+            const thresholdValue = threshold * 255;
+
+            if (mode === 0) {
+                // hard alpha threshold (binary)
+                for (let i = 0; i < buffer.length; i++) {
+                    const pixel = buffer[i];
+
+                    // extract alpha (top 8 bits)
+                    const alpha = pixel >>> 24;
+
+                    buffer[i] = (alpha < thresholdValue)
+                        ? (pixel & 0x00FFFFFF)   // zero alpha
+                        : (pixel | 0xFF000000);  // full alpha
                 }
             }
-            else if (mode == 1) {
-                for (let i = 0; i < data.length; i += 4) {
-                    if (data[i + 3] < threshold * 255) {
-                        data[i] = 0; // red
-                        data[i + 1] = 0; // green
-                        data[i + 2] = 0; //blue
+            else if (mode === 1) {
+                // darken low-alpha pixels
+                for (let i = 0; i < buffer.length; i++) {
+                    const pixel = buffer[i];
+                    const alpha = pixel >>> 24;
+
+                    if (alpha < thresholdValue) {
+                        buffer[i] = (pixel & 0xFF000000); // keep alpha, zero RGB
                     }
                 }
             }
-            ctx.putImageData(imageData, 0, 0);   
+
+            // write back once
+            ctx.putImageData(imageData, 0, 0);
         }
 
-        const startTime = Date.now()
+        const startTime = Date.now();
         let lastTime = startTime;
-        setInterval(() => {
-            if (Date.now() - lastTime >= 1000/framerate){
-                animate((Date.now() - startTime) / 10000);
-                lastTime = Date.now();
+
+        function loop() {
+            const now = Date.now();
+
+            if (now - lastTime >= 1000 / framerate) {
+                animate((now - startTime) / 10000);
+                lastTime = now;
             }
-        }, 1);
+
+            requestAnimationFrame(loop);
+        }
+
+        loop();
     })
 
 </script>
