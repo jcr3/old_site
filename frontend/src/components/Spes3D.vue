@@ -5,9 +5,9 @@
 
     import * as THREE from 'three';
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-	import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-	import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-	import { HalftonePass } from 'three/addons/postprocessing/HalftonePass.js';
+	  import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+	  import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+	  import { HalftonePass } from 'three/addons/postprocessing/HalftonePass.js';
     import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
     import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
@@ -57,7 +57,7 @@
 
     const rotation = new THREE.Vector2(0, 0);
     const velocity = new THREE.Vector2(0, 0);
-    const stiffness = 12;  // feel free to tweak
+    const stiffness = 12;
     const damping = 8;
 
     // LOAD MODEL
@@ -89,17 +89,17 @@
     
     const composer = new EffectComposer( renderer );
 
-	const renderPass = new RenderPass( scene, camera );
+	  const renderPass = new RenderPass( scene, camera );
 
-	const halftonePass = new HalftonePass( canvasWidth, canvasHeight, halftoneParams );
+	  const halftonePass = new HalftonePass( canvasWidth, canvasHeight, halftoneParams );
 
     const unrealBloomPass = new UnrealBloomPass( new THREE.Vector2(canvasWidth, canvasHeight), 0.9, 1, 0.3);
 
     const outputPass = new OutputPass();
     
-	composer.addPass( renderPass );
+	  composer.addPass( renderPass );
     composer.addPass( unrealBloomPass );
-	composer.addPass( halftonePass );
+	  composer.addPass( halftonePass );
     composer.addPass( outputPass );
 
 
