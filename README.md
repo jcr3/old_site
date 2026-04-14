@@ -1,5 +1,5 @@
-A personal porfolio site available at:
+A personal porfolio website available at:
 
-https://v1.jc3.red
+https://portfolio.jc3.red
 
 Built using Vue.js.
