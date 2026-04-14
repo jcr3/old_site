@@ -33,7 +33,7 @@
                     Links
                 </p> -->
                 <a class="link"
-                    target="_blank" rel="noopener noreferrer" href="https://github.com/jcr3/"
+                    target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jcredmond/"
                     style="text-decoration: none;"
                     @click="() => emit('close')"
                 >
