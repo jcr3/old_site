@@ -379,7 +379,7 @@
 
     #navBarIcon {
         position: fixed;
-        z-index: 1;
+        z-index: 2;
         right: 1em;
         top: 1em;
     }

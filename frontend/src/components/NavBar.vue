@@ -23,15 +23,6 @@
                 <p class="link" @click="() => scrollToASection('contact')">
                     Contact
                 </p>
-                <!-- <p class="link" @click="() => emit('close')">
-                    Some
-                </p>
-                <p class="link" @click="() => emit('close')">
-                    Fake
-                </p>
-                <p class="link" @click="() => emit('close')">
-                    Links
-                </p> -->
                 <a class="link"
                     target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jcredmond/"
                     style="text-decoration: none;"

@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
-import ProjectModal from '@/components/ProjectModal.vue'
 import projects from '@/projects.json'
 
 interface Project {
     id: number
     title: string
+    date: string
     description: string
     resources: Array<string>
 }
 
-interface Category {
-    title: string
-    projects: Array<Project>
-}
-
-const selectedProject = ref()
+const selectedProject = ref<Project | null>(null)
 
 function openProject(project: Project) {
   selectedProject.value = project
 }
+
+window.addEventListener('popstate', function (event) {
+    // close project if you press back button
+    selectedProject.value = null
+});
 
 onMounted(() => {
     for (const category of projects) {
@@ -50,37 +50,119 @@ onMounted(() => {
 
 <template>
   <div id="project-gallery">
-    <div v-for="category in projects" class="category">
-        <p class="overlay-section">
-            {{ category.title }}
-        </p>
-
-        <p :id="`prev-${category.id}`" class="prev">❮</p>
-        <div :id="`category-${category.id}`" class="row">
-            <div v-for="project in category.projects"
-                :id="`project-${project.id}`"
-                class="project"
-                @click="openProject(project)"
-            >   
-                <p :id="`title-${project.id}`" class="project-title overlay-section">
-                    {{ project.title }}
+    <div v-if="selectedProject !== null" class="project-page">
+        <div style="overflow: auto; z-index: 1;">
+            <p
+                @click="selectedProject=null"
+                class="x-button"
+            >x</p>
+            <div style="display: flex; padding-left: 1em; padding-top: 1em;">
+            <p class="overlay-section" style="width: fit-content;">
+                    {{ selectedProject.title }}
                 </p>
-                <img
-                    :id="`thumbnail-${project.id}`"
-                    :src="`/projects${project.resources[0]}`"
-                    :alt="project.title"
-                    class="project-thumbnail"
-                >
+                <p style="padding-top: 1.05em;">
+                    {{ selectedProject.date }}
+                </p>
             </div>
+            
+            <div class="resource-grid">
+                <a v-for="(resource, idx) in selectedProject.resources"
+                    :href="`/projects${resource}`" target="_blank" rel="noopener noreferrer"
+                >
+                    <img
+                        :src="`/projects${resource}`"
+                        :alt="`${selectedProject.title}-${idx}`"
+                    >
+                </a>
+            </div>
+
+            <p style="flex-grow: 1; text-align: end; padding: 1em;">
+                {{ selectedProject.description }}
+            </p>
         </div>
-        <p :id="`next-${category.id}`" class="next">❯</p>
     </div>
+    <div v-else>
+        <div v-for="category in projects" class="category">
+            <p class="overlay-section">
+                {{ category.title }}
+            </p>
+
+            <p :id="`prev-${category.id}`" class="prev">❮</p>
+            <div :id="`category-${category.id}`" class="row">
+                <div v-for="project in category.projects"
+                    :id="`project-${project.id}`"
+                    class="project"
+                    @click="openProject(project)"
+                >   
+                    <p :id="`title-${project.id}`" class="project-title overlay-section">
+                        {{ project.title }}
+                    </p>
+                    <img
+                        :id="`thumbnail-${project.id}`"
+                        :src="`/projects${project.resources[0]}`"
+                        :alt="project.title"
+                        class="project-thumbnail"
+                    >
+                </div>
+            </div>
+            <p :id="`next-${category.id}`" class="next">❯</p>
+        </div>
+    </div>
+    
   </div>
 </template>
 
 <style scoped>
 #project-gallery {
     width: 100%;
+}
+
+.project-page {
+    height: 55.7em;
+    margin-left: 1em;
+    margin-right: 1em;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.project-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 0.2em solid var(--accent-color);
+    border-radius: 1em;
+    filter: blur(0.1em);
+}
+
+.x-button {
+    width: fit-content;
+    height: fit-content;
+    font-size: 2em;
+    text-align: end;
+    cursor: pointer;
+    filter: blur(0.05em);
+    position: absolute;
+    right: 0.2em;
+    z-index: 1;
+    transition: color 0.2s;
+}
+.x-button:hover {
+    color: var(--accent-color);
+}
+
+.resource-grid {
+    columns: 4 15em;
+    column-gap: 0.25em;
+    row-gap: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+}.resource-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    break-inside: avoid;
 }
 
 .category {
@@ -128,6 +210,7 @@ onMounted(() => {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    cursor: pointer;
 
     flex: 0 0 auto;
     scroll-snap-align: center;

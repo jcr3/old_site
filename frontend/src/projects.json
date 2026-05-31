@@ -6,6 +6,7 @@
       {
         "id": 1,
         "title": "Home Server",
+        "date": "2025",
         "description": "Proxmox server",
         "resources": [
           "/product_design/de_1.jpg",
@@ -16,6 +17,7 @@
       {
         "id": 2,
         "title": "TTRPG Dice Trays",
+        "date": "2024",
         "description": "For D&D and stuff",
         "resources": [
           "/product_design/de_4.jpg"
@@ -30,6 +32,7 @@
       {
         "id": 3,
         "title": "Poster",
+        "date": "2025",
         "description": "poster.",
         "resources": [
           "/graphic_design/digital_dark.png",
@@ -39,6 +42,7 @@
       {
         "id": 4,
         "title": "Poster Alt",
+        "date": "2025",
         "description": "poster alt.",
         "resources": [
           "/graphic_design/digital_dark_alt.png",
@@ -54,6 +58,7 @@
       {
         "id": 5,
         "title": "Comic",
+        "date": "2026",
         "description": "comic.",
         "resources": [
           "/art/page_1.jpg"
@@ -62,6 +67,7 @@
       {
         "id": 6,
         "title": "Time Warp",
+        "date": "2023",
         "description": "warp",
         "resources": [
           "/art/time_warp.jpg"
