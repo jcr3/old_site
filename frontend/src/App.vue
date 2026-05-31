@@ -5,6 +5,7 @@
     import NavBar from '@/components/NavBar.vue';
     import Spes3D from '@/components/Spes3D.vue';
     import MetaBalls from '@/components/MetaBalls.vue';
+    import ProjectGallery from '@/components/ProjectGallery.vue';
 
     const roleList = [
         'Designer',
@@ -18,7 +19,8 @@
         'Engineer',
         'Hobbiest',
         'Graphic Designer',
-        'Homelabber'
+        'Homelabber',
+        'Musician'
     ]
 
     // parallax layers
@@ -253,7 +255,7 @@
 
         <!-- ABOUT SECTION -->
 
-        <div class="section" id="about" style="height: 100vh; width: 100%;">
+        <div class="section" id="about" style="width: 100%; padding-bottom: 5em;">
             <div style=" width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 3em;">
                 <div class="overlay-header" style="display: flex; justify-content: start;">
                     <p id="about-header">
@@ -263,45 +265,35 @@
                 
                 <div class="overlay-section" style="display: flex; flex-direction: column; align-items: end; padding-top: 1em;">
                     <p id="about-text-1" style="text-align: right; max-width: 30em;">
-                        Multidisciplinary creative with a focus in <b>product design & prototyping</b>, <b>software develoment</b>, 
-                        <b>painting & drawing</b>, <b>music</b>, and <b>film</b> - particullarly when they align with one of arguablly too many hobbies.
+                        JC Redmond III is a multidisciplinary artist and designer with a focus in <i>product design & prototyping</i>, <i>software develoment</i>, 
+                        <i>painting & drawing</i>, <i>music</i>, and <i>film</i> - particullarly when they align with one of arguablly too many hobbies.
                         <br><br>
-                        <i>Currently based in Glasgow, Scotland but originally from Atlanta, Ga.</i>
+                        <i>He is currently based in Glasgow, Scotland but is originally from Atlanta, Ga.</i>
                     </p>
                 </div>
                 <br>
                 <div class="overlay-section" style="display: flex; flex-direction: column; align-items: start;">
                     <p id="about-text-2" style="max-width: 25em;">
-                        Graduated with a <b>BEng Mechatronics</b> degree from the University of Glasgow in 2024 and currently working as a 
-                        <b>Sr. R&D Engineer</b> at Synopsys.
+                        In 2024 he graduated from the University of Glasgow with a <i>First Class BEng Mechatronics</i> degree, along with awards from the
+                        <i>Hammermen of Glasgow</i> and the <i>IMechE</i>, and is currently working as a <i>Sr. R&D Engineer</i> at Synopsys.
                     </p>
-                </div>
-
-                <Icon v-motion-slide-visible-once-bottom
-                    :duration="slideDuration"
-                    icon="material-symbols:arrow-circle-down"
-                    id="arrow-icon-2"
-                    class="overlay-header"
-                    style="width: 1em; position: absolute; bottom: 7em; right: 30%;"
-                />
-                
+                </div>                
             </div>
         </div>
 
-        <div class="section" id="projects" style="height: 100vh; width: 100%;">
+        <!-- PROJECTS SECTION -->
+
+        <div class="section" id="projects" style="width: 100%; padding-bottom: 5em;">
             <div style=" width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 1em;">
-                <div class="overlay-header" style="display: flex; justify-content: center;">
+                <div class="overlay-header" style="display: flex; justify-content: center; padding-bottom: 0.5em;">
                     <p id="projects-header">
                         Projects
                     </p>
                 </div>
-                
-                <div class="overlay-section" style="display: flex; justify-content: start;">
-                    <p id="projects-text" style="padding-top: 3em;">
-                        Loading...
-                    </p>
+
+                <div style="width: 100%; max-width: 1168px;">
+                    <ProjectGallery />
                 </div>
-                
             </div>
         </div>
 
@@ -330,15 +322,7 @@
     <!-- add a nav bar to see resume and contact -->
 </template>
 
-<style scoped>
-
-    b {
-        font-weight: bold;
-        font-style: italic;
-        font-size: 1.1em;
-        color: var(--accent-color);
-        -webkit-text-stroke: var(--fg-color) 0.005em;
-    }
+<style>
 
     i {
         font-style: italic;
@@ -384,16 +368,13 @@
         filter: blur(0.015em);
     }
     .overlay-section {
-        font-family: monospace;
-        font-size: 2.25em;
-        letter-spacing: -0.03em;
-        word-spacing: -0.1em;
+        font-family: 'Trebuchet MS';
+        font-size: 1.7em;
         padding: 0.25em;
         max-width: 1168px;
         width: calc(100% - 2 * 0.25em);
-        -webkit-text-stroke: var(--accent-color) 0.005em;
+        -webkit-text-stroke: var(--accent-color) 0.007em;
         filter: blur(0.015em);
-
     }
 
     #navBarIcon {

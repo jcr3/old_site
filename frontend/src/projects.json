@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "Product Design",
+    "projects": [
+      {
+        "id": 1,
+        "title": "Home Server",
+        "description": "Proxmox server",
+        "resources": [
+          "/product_design/de_1.jpg",
+          "/product_design/de_2.jpg",
+          "/product_design/de_3.jpg"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "TTRPG Dice Trays",
+        "description": "For D&D and stuff",
+        "resources": [
+          "/product_design/de_4.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Graphic Design",
+    "projects": [
+      {
+        "id": 3,
+        "title": "Poster",
+        "description": "poster.",
+        "resources": [
+          "/graphic_design/digital_dark.png",
+          "/graphic_design/digital_light.png"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Poster Alt",
+        "description": "poster alt.",
+        "resources": [
+          "/graphic_design/digital_dark_alt.png",
+          "/graphic_design/digital_light_alt.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Visual Art",
+    "projects": [
+      {
+        "id": 5,
+        "title": "Comic",
+        "description": "comic.",
+        "resources": [
+          "/art/page_1.jpg"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Time Warp",
+        "description": "warp",
+        "resources": [
+          "/art/time_warp.jpg"
+        ]
+      }
+    ]
+  }
+]
