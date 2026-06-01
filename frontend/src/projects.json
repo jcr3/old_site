@@ -1,11 +1,13 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "title": "Product Design",
     "projects": [
       {
-        "id": 1,
+        "id": 0,
         "title": "Home Server",
+        "slug": "home-server",
+        "category": "Product Design",
         "date": "2025",
         "description": "Proxmox server",
         "resources": [
@@ -15,8 +17,10 @@
         ]
       },
       {
-        "id": 2,
+        "id": 1,
         "title": "TTRPG Dice Trays",
+        "slug": "ttrpg-dice-trays",
+        "category": "Product Design",
         "date": "2024",
         "description": "For D&D and stuff",
         "resources": [
@@ -26,22 +30,26 @@
     ]
   },
   {
-    "id": 2,
+    "id": 1,
     "title": "Graphic Design",
     "projects": [
       {
-        "id": 3,
+        "id": 2,
         "title": "Poster",
+        "slug": "poster",
+        "category": "Graphic Design",
         "date": "2025",
         "description": "poster.",
         "resources": [
-          "/graphic_design/digital_dark.png",
-          "/graphic_design/digital_light.png"
+          "/graphic_design/digital_light.png",
+          "/graphic_design/digital_dark.png"
         ]
       },
       {
-        "id": 4,
+        "id": 3,
         "title": "Poster Alt",
+        "slug": "poster-alt",
+        "category": "Graphic Design",
         "date": "2025",
         "description": "poster alt.",
         "resources": [
@@ -52,12 +60,14 @@
     ]
   },
   {
-    "id": 3,
+    "id": 2,
     "title": "Visual Art",
     "projects": [
       {
-        "id": 5,
+        "id": 4,
         "title": "Comic",
+        "slug": "comic",
+        "category": "Visual Art",
         "date": "2026",
         "description": "comic.",
         "resources": [
@@ -65,8 +75,10 @@
         ]
       },
       {
-        "id": 6,
+        "id": 5,
         "title": "Time Warp",
+        "slug": "time-warp",
+        "category": "Visual Art",
         "date": "2023",
         "description": "warp",
         "resources": [
