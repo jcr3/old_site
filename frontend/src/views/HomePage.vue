@@ -228,7 +228,6 @@ onMounted(async () => {
                         @mouseover="wiggleLogo"
                         @mouseout="unWiggleLogo"
                     >
-                </img>
                 </div>
             </div>
             
@@ -313,7 +312,7 @@ onMounted(async () => {
                 <img
                     src="/spes_logo.svg"
                     width="32px"
-                ></img>
+                >
                 <p>
                     email: sanctusspes@gmail.com
                 </p>
