@@ -32,7 +32,7 @@ const highestProjectId = allProjects.length
   : 0;
 
 function openProject(project: Project) {
-    router.push(`/#/${project.slug}`)
+    router.push(`/${project.slug}`)
     document.getElementById("projects")?.scrollIntoView({behavior: 'smooth'});
 }
 
