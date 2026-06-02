@@ -3,6 +3,8 @@ import { computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import projects from '@/projects.json'
 
+// TODO: when you exit a project the next prev buttons no longer work in gallery
+
 const route = useRoute()
 const router = useRouter()
 
@@ -227,11 +229,9 @@ onMounted(() => {
 }
 
 .row {
-    padding-bottom: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
-
-    align-items: center;
+    margin-bottom: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
     
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -264,16 +264,17 @@ onMounted(() => {
 
 .project {
     height: 15em;
-    max-width: 20em;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     cursor: pointer;
+    width: fit-content;
 
     flex: 0 0 auto;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
 
-    display: grid;
+    display: inline-block;
+    position: relative;
 }
 .project:hover .project-title {
     opacity: 100%;
@@ -283,10 +284,20 @@ onMounted(() => {
 }
 
 .project-title {
-    grid-area: 1 / 1;
-    z-index: 1;
-    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     text-align: center;
+
+    overflow-wrap: anywhere;
+    hyphens: auto;
+
+    max-height: calc(100% - 1em);
+    width: calc(100% - 1em);
+    padding: 0.5em;
+    z-index: 1;
+    
     color: white;
     -webkit-text-stroke: var(--accent-color) 0em;
     filter: blur(0.025em);
@@ -294,9 +305,9 @@ onMounted(() => {
     transition: opacity 0.2s;
 }
 .project-thumbnail {
-    grid-area: 1 / 1;
     height: 15em;
     transition: filter 0.2s;
+    display: block;
 }
 
 </style>

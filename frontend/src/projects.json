@@ -26,6 +26,72 @@
         "resources": [
           "/product_design/de_4.jpg"
         ]
+      },
+      {
+        "id": 2,
+        "title": "TTRPG Dice Trays",
+        "slug": "ttrpg-dice-trays",
+        "category": "Product Design",
+        "date": "2024",
+        "description": "For D&D and stuff",
+        "resources": [
+          "/product_design/de_4.jpg"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "TTRPG Dice Trays",
+        "slug": "ttrpg-dice-trays",
+        "category": "Product Design",
+        "date": "2024",
+        "description": "For D&D and stuff",
+        "resources": [
+          "/product_design/de_4.jpg"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "TTRPG Dice Trays",
+        "slug": "ttrpg-dice-trays",
+        "category": "Product Design",
+        "date": "2024",
+        "description": "For D&D and stuff",
+        "resources": [
+          "/product_design/de_4.jpg"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "TTRPG Dice Trays",
+        "slug": "ttrpg-dice-trays",
+        "category": "Product Design",
+        "date": "2024",
+        "description": "For D&D and stuff",
+        "resources": [
+          "/product_design/de_4.jpg"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "TTRPG Dice Trays",
+        "slug": "ttrpg-dice-trays",
+        "category": "Product Design",
+        "date": "2024",
+        "description": "For D&D and stuff",
+        "resources": [
+          "/product_design/de_4.jpg"
+        ]
+      },
+      {
+        "id": 7,
+        "title": "TTRPG Dice Trays",
+        "slug": "ttrpg-dice-trays",
+        "category": "Product Design",
+        "date": "2024",
+        "description": "For D&D and stuff",
+        "resources": [
+          "/product_design/de_4.jpg"
+        ]
       }
     ]
   },
@@ -34,27 +100,92 @@
     "title": "Graphic Design",
     "projects": [
       {
-        "id": 2,
-        "title": "Poster",
-        "slug": "poster",
+        "id": 8,
+        "title": "Breadstain at the Flying Duck",
+        "slug": "bsfd",
         "category": "Graphic Design",
         "date": "2025",
-        "description": "poster.",
+        "description": "The artwork and poster for Breadstains gig at the Flying Duck, supported by Roof Cats and Dot Pixis. Poster created in MS Paint and Inkscape.",
         "resources": [
           "/graphic_design/digital_light.png",
-          "/graphic_design/digital_dark.png"
+          "/graphic_design/digital_dark.png",
+          "/graphic_design/poster_irl.jpg",
+          "/graphic_design/digital_light_alt.png",
+          "/graphic_design/digital_dark_alt.png",
+          "/graphic_design/Poster_art.png"
         ]
       },
       {
-        "id": 3,
-        "title": "Poster Alt",
-        "slug": "poster-alt",
+        "id": 9,
+        "title": "Empyrean Tears",
+        "slug": "empyrean-tears",
+        "category": "Graphic Design",
+        "date": "2020",
+        "description": "Shirts designed and printed in a colabortive project with Kotaro Ito. Cylindrical packaging was also designed and created but has been lost to time.",
+        "resources": [
+          "/graphic_design/shirt_1.jpg",
+          "/graphic_design/shirt_2.jpg",
+          "/graphic_design/shirt_3.jpg",
+          "/graphic_design/shirt_4.jpg"
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Drumless Festival",
+        "slug": "drumless",
         "category": "Graphic Design",
         "date": "2025",
-        "description": "poster alt.",
+        "description": "Poster created in Inkscape for the Drumless mini charity festival.",
         "resources": [
-          "/graphic_design/digital_dark_alt.png",
-          "/graphic_design/digital_light_alt.png"
+          "/graphic_design/DRUMLESS_V4.png"
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Slug 1",
+        "slug": "slug1",
+        "category": "Graphic Design",
+        "date": "2024",
+        "description": "Poster created in Photoshop with artwork from Taba Jean for the band Slug.",
+        "resources": [
+          "/graphic_design/slug_1.png"
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Slug 2",
+        "slug": "slug2",
+        "category": "Graphic Design",
+        "date": "2025",
+        "description": "Poster created in Inkscape with artwork from Kieran Holt for the band Slug.",
+        "resources": [
+          "/graphic_design/slug_2.png"
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Yes Scotland",
+        "slug": "yes",
+        "category": "Graphic Design",
+        "date": "2026",
+        "description": "Poster created for a Yes United and IFS hosted event featuring artists such as Eddi Reader and Bobby Bluebell. Created in Inkscape.",
+        "resources": [
+          "/graphic_design/Yes_OranMor_Poster_v3.png",
+          "/graphic_design/Yes_OranMor_Poster_digital_v2.png"
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Breadstain Stickers",
+        "slug": "stickers",
+        "category": "Graphic Design",
+        "date": "2025",
+        "description": "Bread stain stickers for Breadstain the band.",
+        "resources": [
+          "/graphic_design/sticker_1.jpg",
+          "/graphic_design/logo_black.svg",
+          "/graphic_design/logo_pink.svg",
+          "/graphic_design/logo_brown.svg"
         ]
       }
     ]
@@ -64,23 +195,155 @@
     "title": "Visual Art",
     "projects": [
       {
-        "id": 4,
+        "id": 15,
+        "title": "Knee Painting",
+        "slug": "knee",
+        "category": "Visual Art",
+        "date": "2023",
+        "description": "Painted from life in oils on canvas board.",
+        "resources": [
+          "/art/knee.jpg"
+        ]
+      },
+      {
+        "id": 16,
+        "title": "Parade",
+        "slug": "parade",
+        "category": "Visual Art",
+        "date": "2026",
+        "description": "Ink on paper drawn from imagination.",
+        "resources": [
+          "/art/kjg.jpg"
+        ]
+      },
+      {
+        "id": 17,
+        "title": "Tugboat",
+        "slug": "tugboat",
+        "category": "Visual Art",
+        "date": "2025",
+        "description": "A digital painting for my dad of our dog Tugboat.",
+        "resources": [
+          "/art/tugboat.png"
+        ]
+      },
+      {
+        "id": 18,
+        "title": "Life Drawing 1",
+        "slug": "ld1",
+        "category": "Visual Art",
+        "date": "2024",
+        "description": "A drawing done at the university life drawing society.",
+        "resources": [
+          "/art/ld_9.jpg"
+        ]
+      },
+      {
+        "id": 19,
         "title": "Comic",
         "slug": "comic",
         "category": "Visual Art",
         "date": "2026",
-        "description": "comic.",
+        "description": "The first page of a planned 10 page comic teaser. Digitally inked.",
         "resources": [
           "/art/page_1.jpg"
         ]
       },
       {
-        "id": 5,
+        "id": 20,
+        "title": "Unfinished Life Painting",
+        "slug": "unfinished",
+        "category": "Visual Art",
+        "date": "2023",
+        "description": "An unfinished painting. Oil on canvasboard.",
+        "resources": [
+          "/art/lady.jpg"
+        ]
+      },
+      {
+        "id": 21,
+        "title": "Finished Life Painting",
+        "slug": "finished",
+        "category": "Visual Art",
+        "date": "2023",
+        "description": "The first life painting I have ever done. Oil on canvas lined mdf board.",
+        "resources": [
+          "/art/small_lady.jpg"
+        ]
+      },
+      {
+        "id": 22,
+        "title": "Highlands",
+        "slug": "thighlands",
+        "category": "Visual Art",
+        "date": "2024",
+        "description": "Graphite on paper drawn plein air.",
+        "resources": [
+          "/art/scotland.jpg"
+        ]
+      },
+      {
+        "id": 23,
+        "title": "Ran",
+        "slug": "ran",
+        "category": "Visual Art",
+        "date": "2025",
+        "description": "A drawing I did from memory one day after watching the film Ran by Akira Kurosawa. Brush pen on paper.",
+        "resources": [
+          "/art/ran.jpg"
+        ]
+      },
+      {
+        "id": 24,
+        "title": "Life Drawing 2",
+        "slug": "ld2",
+        "category": "Visual Art",
+        "date": "2024",
+        "description": "A drawing done at the university life drawing society.",
+        "resources": [
+          "/art/ld_11.jpg"
+        ]
+      },
+      {
+        "id": 25,
+        "title": "Life Drawing 3",
+        "slug": "ld3",
+        "category": "Visual Art",
+        "date": "2024",
+        "description": "A drawing done at the university life drawing society.",
+        "resources": [
+          "/art/ld_15.jpg"
+        ]
+      },
+      {
+        "id": 26,
+        "title": "Life Drawing 4",
+        "slug": "ld4",
+        "category": "Visual Art",
+        "date": "2024",
+        "description": "A drawing done at the university life drawing society.",
+        "resources": [
+          "/art/ld_6.jpg"
+        ]
+      },
+      {
+        "id": 27,
+        "title": "Self Portrait",
+        "slug": "self",
+        "category": "Visual Art",
+        "date": "2023",
+        "description": "Drawn from a photo.",
+        "resources": [
+          "/art/self.jpg"
+        ]
+      },
+      {
+        "id": 28,
         "title": "Time Warp",
         "slug": "time-warp",
         "category": "Visual Art",
         "date": "2023",
-        "description": "warp",
+        "description": "An attempt to capture motion.",
         "resources": [
           "/art/time_warp.jpg"
         ]
