@@ -57,30 +57,16 @@ function prevNextProject(prev: boolean = true) {
     }
 }
 
-onMounted(() => {
-    // gallery section
-    for (const category of projects) {
-        const row = document.getElementById(`category-${category.id}`)
-        const next = document.getElementById(`next-${category.id}`)
-        const prev = document.getElementById(`prev-${category.id}`)
-        
-        if (next && prev&& row) {
-            next.onclick = () => {
-                row.scrollBy({
-                    left: row.clientWidth,
-                    behavior: "smooth"
-                })
-            }
+function scrollCategory(categoryId: number, direction: number) {
+  const row = document.getElementById(`category-${categoryId}`)
 
-            prev.onclick = () => {
-                row.scrollBy({
-                    left: -row.clientWidth,
-                    behavior: "smooth"
-                })
-            }
-        } 
-    }
-})
+  if (!row) return
+
+  row.scrollBy({
+    left: row.clientWidth * direction,
+    behavior: 'smooth'
+  })
+}
 
 </script>
 
@@ -131,7 +117,10 @@ onMounted(() => {
                 {{ category.title }}
             </p>
 
-            <p :id="`prev-${category.id}`" class="prev">❮</p>
+            <p
+                @click="scrollCategory(category.id, -1)"
+                :id="`prev-${category.id}`" class="prev"
+            >❮</p>
             <div :id="`category-${category.id}`" class="row">
                 <div v-for="project in category.projects"
                     :id="`project-${project.id}`"
@@ -150,7 +139,10 @@ onMounted(() => {
                     >
                 </div>
             </div>
-            <p :id="`next-${category.id}`" class="next">❯</p>
+            <p 
+                @click="scrollCategory(category.id, 1)"
+                :id="`next-${category.id}`" class="next"
+            >❯</p>
         </div>
     </div>
     
