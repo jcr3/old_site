@@ -221,11 +221,13 @@ function scrollCategory(categoryId: number, direction: number) {
 }
 
 .row {
-    margin-bottom: 1em;
+    padding-top: 0.1em;
+    padding-bottom: 0.9em;
     margin-left: 2em;
     margin-right: 2em;
     
     overflow-x: auto;
+    overflow-y: visible;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
 
@@ -267,12 +269,23 @@ function scrollCategory(categoryId: number, direction: number) {
 
     display: inline-block;
     position: relative;
+
+    animation: bob 1.75s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 .project:hover .project-title {
     opacity: 100%;
 }
 .project:hover .project-thumbnail {
     filter: brightness(50%);
+}
+.project:nth-child(3n) {
+    animation-delay: -0.5s;
+}
+.project:nth-child(3n + 1) {
+    animation-delay: -1.2s;
+}
+.project:nth-child(3n + 2) {
+    animation-delay: -2.6s;
 }
 
 .project-title {
@@ -300,6 +313,14 @@ function scrollCategory(categoryId: number, direction: number) {
     height: 15em;
     transition: filter 0.2s;
     display: block;
+}
+
+@keyframes bob {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-0.1em); }
+    50%  { transform: translateY(0); }
+    75%  { transform: translateY(0.1em); }
+    100% { transform: translateY(0); }
 }
 
 </style>
