@@ -83,7 +83,7 @@ function scrollCategory(categoryId: number, direction: number) {
     <div v-if="selectedProject !== null" class="project-page">
         <p @click="prevNextProject(true)" id="prev" class="prev">❮</p>
         <p @click="prevNextProject(false)" id="next" class="next">❯</p>
-        <div style="overflow: auto; z-index: 1;">
+        <div style="overflow-y: auto; z-index: 1;">
             <p
                 @click="closeProject"
                 class="x-button"
@@ -105,6 +105,7 @@ function scrollCategory(categoryId: number, direction: number) {
                     <iframe v-if="resource.startsWith('https://') && !resource.startsWith('https://img.youtube')"
                         :src="resource"
                         :title="`${selectedProject.title}-${idx}`"
+                        style="max-width: 100%;"
                     ></iframe>
                     <div v-else-if="!resource.startsWith('https://img.youtube')">
                         <model-viewer v-if="resource.endsWith('.glb')"
@@ -112,6 +113,7 @@ function scrollCategory(categoryId: number, direction: number) {
                             :alt="`${selectedProject.title}-${idx}`"
                             auto-rotate
                             camera-controls
+                            style="max-width: 100%;"
                         >
                         </model-viewer>
                         <a v-else

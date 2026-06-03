@@ -361,7 +361,7 @@
         ]
       },
       {
-        "id": 28,
+        "id": 29,
         "title": "She Rise Up",
         "slug": "she-rise-up",
         "category": "Visual Art",
@@ -370,6 +370,18 @@
         "resources": [
           "https://img.youtube.com/vi/84y2wRQmFLA/hqdefault.jpg",
           "https://www.youtube.com/embed/84y2wRQmFLA?si=jUBAZ48qCt4kGGke"
+        ]
+      },
+      {
+        "id": 30,
+        "title": "Back to School Kendama Edit",
+        "slug": "kendama",
+        "category": "Visual Art",
+        "date": "2019",
+        "description": "Winner of Kendama USA Back to School edit competition.",
+        "resources": [
+          "https://img.youtube.com/vi/DnMt1HuH2zs/hqdefault.jpg",
+          "https://www.youtube.com/embed/DnMt1HuH2zs?si=RUS4zaIXl6_J4z5W"
         ]
       }
     ]
