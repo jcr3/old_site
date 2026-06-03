@@ -15,10 +15,14 @@ const roleList = [
     'Maker',
     'Software Developer',
     'Clothing Designer',
+    'Illustrator',
     'Painter',
     'Video Editor',
-    'Actor/Director',
+    'Film Maker',
     'Toy Designer',
+    'Game Designer',
+    'Product Designer',
+    'UI/UX Designer',
     'Engineer',
     'Hobbiest',
     'Graphic Designer',
@@ -272,10 +276,10 @@ onMounted(async () => {
                 
                 <div class="overlay-section" style="display: flex; flex-direction: column; align-items: end; padding-top: 1em;">
                     <p id="about-text-1" style="text-align: right; max-width: 30em;">
-                        JC Redmond III is a multidisciplinary artist and designer with a focus in <i>product design & prototyping</i>, <i>software develoment</i>, 
-                        <i>painting & drawing</i>, <i>music</i>, and <i>film</i> - particullarly when they align with one of arguablly too many hobbies.
+                        JC Redmond III is a multidisciplinary artist and designer with expertise in <i>product design & prototyping</i>, <i>software develoment</i>, 
+                        <i>painting & drawing</i>, <i>music</i>, and <i>film</i> - particullarly when they align with one of his many interests.
                         <br><br>
-                        <i>He is currently based in Glasgow, Scotland but is originally from Atlanta, Ga.</i>
+                        <i>Originally from Atlanta, Ga in the United States, he is currently based in Glasgow, Scotland.</i>
                     </p>
                 </div>
                 <br>
@@ -330,9 +334,8 @@ onMounted(async () => {
 
 <style>
 
-    i {
-        font-style: italic;
-    }
+    i { font-style: italic; }
+    b { font-weight: bold; }
 
     #home-page {
         color: var(--fg-color);

@@ -2,8 +2,16 @@
 import { computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import projects from '@/projects.json'
+import { marked, type Tokens } from "marked";
 
-// TODO: when you exit a project the next prev buttons no longer work in gallery
+const renderer = new marked.Renderer();
+
+renderer.link = ({ href, title, tokens }: Tokens.Link) => {
+  const text = tokens?.map(t => t.raw).join("") ?? "";
+  return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+};
+
+marked.use({ renderer });
 
 const route = useRoute()
 const router = useRouter()
@@ -93,19 +101,35 @@ function scrollCategory(categoryId: number, direction: number) {
             </div>
             
             <div class="resource-grid">
-                <a v-for="(resource, idx) in selectedProject.resources"
-                    :href="`/projects${resource}`" target="_blank" rel="noopener noreferrer"
-                >
-                    <img
-                        :src="`/projects${resource}`"
-                        :alt="`${selectedProject.title}-${idx}`"
-                    >
-                </a>
+                <div v-for="(resource, idx) in selectedProject.resources">
+                    <iframe v-if="resource.startsWith('https://') && !resource.startsWith('https://img.youtube')"
+                        :src="resource"
+                        :title="`${selectedProject.title}-${idx}`"
+                    ></iframe>
+                    <div v-else-if="!resource.startsWith('https://img.youtube')">
+                        <model-viewer v-if="resource.endsWith('.glb')"
+                            :src="`/projects${resource}`"
+                            :alt="`${selectedProject.title}-${idx}`"
+                            auto-rotate
+                            camera-controls
+                        >
+                        </model-viewer>
+                        <a v-else
+                            :href="resource.startsWith('https://') ? resource : `/projects${resource}`"
+                            target="_blank" rel="noopener noreferrer"
+                        >
+                            <img
+                                :src="`/projects${resource}`"
+                                :alt="`${selectedProject.title}-${idx}`"
+                            >
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <p style="flex-grow: 1; text-align: end; padding: 2em; padding-top: 1em;">
-                {{ selectedProject.description }}
-            </p>
+            <p v-html="marked.parse(selectedProject.description)"
+                style="flex-grow: 1; text-align: end; padding: 2em; padding-top: 1em; padding-left: 5em;"
+            ></p>
         </div>
         <p id="page-number">
             {{ selectedProject.id + 1 }}/{{ highestProjectId + 1 }}
@@ -130,8 +154,21 @@ function scrollCategory(categoryId: number, direction: number) {
                     <p :id="`title-${project.id}`" class="project-title overlay-section">
                         {{ project.title }}
                     </p>
-                    <!--If its ever relevant, let resources link to 3d models and youtube videos-->
-                    <img
+                    <img v-if="project.resources[0].startsWith('https://')"
+                        :id="`thumbnail-${project.id}`"
+                        :src="project.resources[0]"
+                        :title="project.title"
+                        class="project-thumbnail"
+                    >
+                    <model-viewer v-else-if="project.resources[0].endsWith('.glb')"
+                        :id="`thumbnail-${project.id}`"
+                        :src="`/projects${project.resources[0]}`"
+                        :alt="project.title"
+                        auto-rotate
+                        class="project-thumbnail"
+                    >
+                    </model-viewer>
+                    <img v-else
                         :id="`thumbnail-${project.id}`"
                         :src="`/projects${project.resources[0]}`"
                         :alt="project.title"
@@ -221,8 +258,8 @@ function scrollCategory(categoryId: number, direction: number) {
 }
 
 .row {
-    padding-top: 0.1em;
-    padding-bottom: 0.9em;
+    padding-top: 0.2em;
+    padding-bottom: 0.8em;
     margin-left: 2em;
     margin-right: 2em;
     
@@ -270,13 +307,18 @@ function scrollCategory(categoryId: number, direction: number) {
     display: inline-block;
     position: relative;
 
-    animation: bob 1.75s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    animation: bob 1.75s ease-in-out infinite;
+    transition: animation 1s;
+}
+.project:hover {
+    animation: none;
 }
 .project:hover .project-title {
     opacity: 100%;
 }
 .project:hover .project-thumbnail {
     filter: brightness(50%);
+    background-color: white;
 }
 .project:nth-child(3n) {
     animation-delay: -0.5s;
@@ -311,16 +353,14 @@ function scrollCategory(categoryId: number, direction: number) {
 }
 .project-thumbnail {
     height: 15em;
-    transition: filter 0.2s;
+    transition: filter background-color 0.2s;
     display: block;
 }
 
 @keyframes bob {
-    0%   { transform: translateY(0); }
-    25%  { transform: translateY(-0.1em); }
-    50%  { transform: translateY(0); }
-    75%  { transform: translateY(0.1em); }
-    100% { transform: translateY(0); }
+    0%  { transform: translateY(-0.1em) scale3d(0.99, 1.01, 1); }
+    50%  { transform: translateY(0.1em) scale3d(1.01, 0.99, 1); }
+    100% { transform: translateY(-0.1em) scale3d(0.99, 1.01, 1); }
 }
 
 </style>
