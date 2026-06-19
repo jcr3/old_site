@@ -277,9 +277,9 @@ onMounted(async () => {
                 <div class="overlay-section" style="display: flex; flex-direction: column; align-items: end; padding-top: 1em;">
                     <p id="about-text-1" style="text-align: right; max-width: 30em;">
                         JC Redmond III is a multidisciplinary artist and designer with expertise in <i>product design & prototyping</i>, <i>software develoment</i>, 
-                        <i>painting & drawing</i>, <i>music</i>, and <i>film</i> - particullarly when they align with one of his many interests.
+                        <i>painting & drawing</i>, <i>music</i>, and <i>film</i> - particullarly when they align with one of his many hobbies.
                         <br><br>
-                        <i>Originally from Atlanta, Ga in the United States, he is currently based in Glasgow, Scotland.</i>
+                        <i>Originally from Atlanta, Ga he has been based in Glasgow, Scotland since 2020.</i>
                     </p>
                 </div>
                 <br>
