@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import projects from '@/projects.json'
 import { marked, type Tokens } from "marked";
@@ -76,6 +76,24 @@ function scrollCategory(categoryId: number, direction: number) {
   })
 }
 
+const decor_text = ref(new Array<string>)
+projects.forEach(category => {
+    decor_text.value.push('....✶✶✶✩✩✯✯✲✯✯✩✩✶✶✶....✶✶✶✩✩✯✯✲✯✯✩✩✶✶✶....✶✶✶✩✩✯✯✲✯✯✩✩✶✶✶....');
+
+    let direction = Math.random() < 0.5 ? "left" : "right";
+
+    setInterval(() => {
+        if (Math.random() < 0.01) {
+            direction = direction === "left" ? "right" : "left";
+        }
+        let text = decor_text.value[category.id]
+        if (direction === "left") {
+            decor_text.value[category.id] = text.slice(1) + text[0];
+        } else {
+            decor_text.value[category.id] = text[text.length - 1] + text.slice(0, -1);
+        }
+    }, 50);
+});
 </script>
 
 <template>
@@ -139,9 +157,16 @@ function scrollCategory(categoryId: number, direction: number) {
     </div>
     <div v-else>
         <div v-for="category in projects" class="category">
-            <p class="overlay-section">
-                {{ category.title }}
-            </p>
+            <div class="title-bar">
+                <p class="overlay-section" style="flex: 0 0 auto; width: fit-content;">
+                    {{ category.title }}
+                </p>
+                <p :id="`decor-${category.id}`" class="overlay-section"
+                    style="filter: blur(0.07em); user-select: none; white-space: nowrap; opacity: 0.5;"
+                >
+                    {{decor_text[category.id]}}
+                </p>
+            </div>
 
             <p
                 @click="scrollCategory(category.id, -1)"
@@ -250,6 +275,15 @@ function scrollCategory(categoryId: number, direction: number) {
     position: relative;
 }
 
+.title-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    width: calc(100% - 0.5em);
+    margin-right: 0.5em;
+    overflow: hidden;
+}
+
 #page-number {
     position: absolute;
     left: 50%;
@@ -309,7 +343,7 @@ function scrollCategory(categoryId: number, direction: number) {
     display: inline-block;
     position: relative;
 
-    animation: bob 1.75s ease-in-out infinite;
+    animation: bob 2.5s ease-in-out infinite;
     transition: animation 1s;
 }
 .project:hover {
@@ -360,9 +394,9 @@ function scrollCategory(categoryId: number, direction: number) {
 }
 
 @keyframes bob {
-    0%  { transform: translateY(-0.1em) scale3d(0.99, 1.01, 1); }
-    50%  { transform: translateY(0.1em) scale3d(1.01, 0.99, 1); }
-    100% { transform: translateY(-0.1em) scale3d(0.99, 1.01, 1); }
+    0%  { transform: translateY(-0.025em) scale3d(0.9975, 1.0025, 1); }
+    50%  { transform: translateY(0.025em) scale3d(1.0025, 0.9975, 1); }
+    100% { transform: translateY(-0.025em) scale3d(0.9975, 1.0025, 1); }
 }
 
 </style>

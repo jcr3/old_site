@@ -9,10 +9,15 @@
         "slug": "home-server",
         "category": "Product Design",
         "date": "2025",
-        "description": "Proxmox home server hardrive rack in the style of a Synology NAS. Currently hosting a media server, a file server, and most importantly a minecraft server. Designed in Fusion 360 and printed in PLA.",
+        "description": "Proxmox home server HDD rack in the style of a Synology NAS. Currently hosting a media server, a file server, and most importantly a Minecraft server. Designed in Fusion 360 and printed in PLA & PETG.",
         "resources": [
-          "/product_design/NAS.glb",
-          "/product_design/NAS_drawer.glb"
+          "/product_design/NAS/server_3.jpg",
+          "/product_design/NAS/server_2.jpg",
+          "/product_design/NAS/server_1.jpg",
+          "/product_design/NAS/server_4.jpg",
+          "/product_design/NAS/server_5.jpg",
+          "/product_design/NAS/NAS.glb",
+          "/product_design/NAS//NAS_drawer.glb"
         ]
       },
       {
@@ -21,10 +26,15 @@
         "slug": "ttrpg-dice-trays",
         "category": "Product Design",
         "date": "2024",
-        "description": "A large dice tray for TTRPGs such as D&D with a collapsable dice tower, multiple dice areas, and spell slot trackers.\n\nA mini dice tray for taking a set on the go.\n\nDesigned in Fusion 360 and 3d printed in PLA. Fastened with magnets and lined with wool felt.",
+        "description": "A large dice tray for TTRPGs such as D&D with a collapsable dice tower, multiple dice areas, and spell slot trackers.\n\nMini dice trays for taking dice sets on the go.\n\nDesigned in Fusion 360 and 3d printed in PLA. Fastened with magnets and lined with wool felt.",
         "resources": [
-          "/product_design/dnd/standard_tray.glb",
-          "/product_design/dnd/tiny_tray.glb"
+          "/product_design/dnd/dice_tray.gif",
+          "/product_design/dnd/big_tray_1.jpg",
+          "/product_design/dnd/big_tray_2.jpg",
+          "/product_design/dnd/big_tray_4.jpg",
+          "/product_design/dnd/small_tray_1.jpg",
+          "/product_design/dnd/small_tray_2.jpg",
+          "/product_design/dnd/small_tray_3.jpg"
         ]
       },
       {
@@ -33,26 +43,35 @@
         "slug": "ttrpg-accessories",
         "category": "Product Design",
         "date": "2025",
-        "description": "Dice capsules for super portable dice storage.\n\nMiniature tokens for tactical combat on the grid without the trouble.\n\nInitiative trackers that slot on a GM screen.\n\nA fabric dice bag.\n\nDesigned in Fusion 360 and printed in PLA where applicable. Magnet fasteners and acrylic paint where applicable.",
+        "description": "Dice capsules for super portable dice storage.\n\nMiniature tokens for tactical combat on the grid without the trouble.\n\nA fabric dice bag.\n\nDesigned in Fusion 360 and printed in PLA where applicable. Magnet fasteners and acrylic paint where applicable.",
         "resources": [
+          "/product_design/dnd/tokens_2.jpg",
+          "/product_design/dnd/tokens_1.jpg",
+          "/product_design/dnd/caps_2.jpg",
+          "/product_design/dnd/caps_1.jpg",
           "/product_design/dnd/token_holder.glb",
           "/product_design/dnd/dice_capsule.glb"
         ]
       },
       {
         "id": 3,
-        "title": "Fingerboard Obstacles",
+        "title": "Finger-board",
         "slug": "fb",
         "category": "Product Design",
         "date": "2024",
         "description": "An elevation of the classic tech deck concept with the star in the lineup being the combination quarter pipe, ledge, hubba, and deck storage obstacle. Supported by more traditional obstacles, all designed in fusion360, printed in PLA, and magnets used where applicable.",
         "resources": [
-          "/product_design/fb/miniPark.glb",
-          "/product_design/fb/firecrackerLedge.glb",
-          "/product_design/fb/slantLedge.glb",
-          "/product_design/fb/baseQuarter.glb",
-          "/product_design/fb/extendedQuarter.glb",
-          "/product_design/fb/Mod_Ledge.glb"
+          "/product_design/fb/mini_park.gif",
+          "/product_design/fb/mini_park_1.jpg",
+          "/product_design/fb/mini_park_2.jpg",
+          "/product_design/fb/mini_park_3.jpg",
+          "/product_design/fb/mini_park_4.jpg",
+          "/product_design/fb/firecracker_1.jpg",
+          "/product_design/fb/firecracker_2.jpg",
+          "/product_design/fb/og_1.jpg",
+          "/product_design/fb/og_2.jpg",
+          "/product_design/fb/og_3.jpg",
+          "/product_design/fb/miniPark.glb"
         ]
       },
       {
@@ -63,9 +82,9 @@
         "date": "2024",
         "description": "A custom designed and manufactured guitar distortion pedal based on the [Bass Fuzz](https://home-wrecker.com/bazz.html) circuit. KiCad used for circuit design with PCB manufactured at the University of Glasgow.",
         "resources": [
-          "/product_design/pedal1.jpg",
-          "/product_design/pedal2.jpg",
-          "/product_design/pedal3.jpg"
+          "/product_design/pedal/pedal1.jpg",
+          "/product_design/pedal/pedal2.jpg",
+          "/product_design/pedal/pedal3.jpg"
         ]
       },
       {
@@ -76,7 +95,9 @@
         "date": "2026",
         "description": "A current work in progress.\n\nOne of the original electronic instruments which utilises a ring controler to adjust pitch and a throttle to adjust attack. Controls for adjusting octave up and down as well as choice of sine wave, saw wave, triangle wave, and square wave.\n\nEnclosure designed in Fusion 360 and printed in PLA.",
         "resources": [
-          "/product_design/ondes.glb"
+          "/product_design/ondes/ondes_1.jpg",
+          "/product_design/ondes/ondes_2.jpg",
+          "/product_design/ondes/ondes.glb"
         ]
       },
       {
