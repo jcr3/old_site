@@ -5,56 +5,6 @@
     "projects": [
       {
         "id": 0,
-        "title": "Home Server",
-        "slug": "home-server",
-        "category": "Product Design",
-        "date": "2025",
-        "description": "Proxmox home server HDD rack in the style of a Synology NAS. Currently hosting a media server, a file server, and most importantly a Minecraft server. Designed in Fusion 360 and printed in PLA & PETG.",
-        "resources": [
-          "/product_design/NAS/server_3.jpg",
-          "/product_design/NAS/server_2.jpg",
-          "/product_design/NAS/server_1.jpg",
-          "/product_design/NAS/server_4.jpg",
-          "/product_design/NAS/server_5.jpg",
-          "/product_design/NAS/NAS.glb",
-          "/product_design/NAS//NAS_drawer.glb"
-        ]
-      },
-      {
-        "id": 1,
-        "title": "TTRPG Dice Trays",
-        "slug": "ttrpg-dice-trays",
-        "category": "Product Design",
-        "date": "2024",
-        "description": "A large dice tray for TTRPGs such as D&D with a collapsable dice tower, multiple dice areas, and spell slot trackers.\n\nMini dice trays for taking dice sets on the go.\n\nDesigned in Fusion 360 and 3d printed in PLA. Fastened with magnets and lined with wool felt.",
-        "resources": [
-          "/product_design/dnd/dice_tray.gif",
-          "/product_design/dnd/big_tray_1.jpg",
-          "/product_design/dnd/big_tray_2.jpg",
-          "/product_design/dnd/big_tray_4.jpg",
-          "/product_design/dnd/small_tray_1.jpg",
-          "/product_design/dnd/small_tray_2.jpg",
-          "/product_design/dnd/small_tray_3.jpg"
-        ]
-      },
-      {
-        "id": 2,
-        "title": "TTRPG Accessories",
-        "slug": "ttrpg-accessories",
-        "category": "Product Design",
-        "date": "2025",
-        "description": "Dice capsules for super portable dice storage.\n\nMiniature tokens for tactical combat on the grid without the trouble.\n\nA fabric dice bag.\n\nDesigned in Fusion 360 and printed in PLA where applicable. Magnet fasteners and acrylic paint where applicable.",
-        "resources": [
-          "/product_design/dnd/tokens_2.jpg",
-          "/product_design/dnd/tokens_1.jpg",
-          "/product_design/dnd/caps_2.jpg",
-          "/product_design/dnd/caps_1.jpg",
-          "/product_design/dnd/token_holder.glb",
-          "/product_design/dnd/dice_capsule.glb"
-        ]
-      },
-      {
-        "id": 3,
         "title": "Finger-board",
         "slug": "fb",
         "category": "Product Design",
@@ -75,7 +25,7 @@
         ]
       },
       {
-        "id": 4,
+        "id": 1,
         "title": "Distortion Pedal",
         "slug": "pedal",
         "category": "Product Design",
@@ -85,6 +35,56 @@
           "/product_design/pedal/pedal1.jpg",
           "/product_design/pedal/pedal2.jpg",
           "/product_design/pedal/pedal3.jpg"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "TTRPG Dice Trays",
+        "slug": "ttrpg-dice-trays",
+        "category": "Product Design",
+        "date": "2024",
+        "description": "A large dice tray for TTRPGs such as D&D with a collapsable dice tower, multiple dice areas, and spell slot trackers.\n\nMini dice trays for taking dice sets on the go.\n\nDesigned in Fusion 360 and 3d printed in PLA. Fastened with magnets and lined with wool felt.",
+        "resources": [
+          "/product_design/dnd/dice_tray.gif",
+          "/product_design/dnd/big_tray_1.jpg",
+          "/product_design/dnd/big_tray_2.jpg",
+          "/product_design/dnd/big_tray_4.jpg",
+          "/product_design/dnd/small_tray_1.jpg",
+          "/product_design/dnd/small_tray_2.jpg",
+          "/product_design/dnd/small_tray_3.jpg"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "TTRPG Accessories",
+        "slug": "ttrpg-accessories",
+        "category": "Product Design",
+        "date": "2025",
+        "description": "Dice capsules for super portable dice storage.\n\nMiniature tokens for tactical combat on the grid without the trouble.\n\nA fabric dice bag.\n\nDesigned in Fusion 360 and printed in PLA where applicable. Magnet fasteners and acrylic paint where applicable.",
+        "resources": [
+          "/product_design/dnd/tokens_2.jpg",
+          "/product_design/dnd/tokens_1.jpg",
+          "/product_design/dnd/caps_2.jpg",
+          "/product_design/dnd/caps_1.jpg",
+          "/product_design/dnd/token_holder.glb",
+          "/product_design/dnd/dice_capsule.glb"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Home Server",
+        "slug": "home-server",
+        "category": "Product Design",
+        "date": "2025",
+        "description": "Proxmox home server HDD rack in the style of a Synology NAS. Currently hosting a media server, a file server, and most importantly a Minecraft server. Designed in Fusion 360 and printed in PLA & PETG.",
+        "resources": [
+          "/product_design/NAS/server_3.jpg",
+          "/product_design/NAS/server_2.jpg",
+          "/product_design/NAS/server_1.jpg",
+          "/product_design/NAS/server_4.jpg",
+          "/product_design/NAS/server_5.jpg",
+          "/product_design/NAS/NAS.glb",
+          "/product_design/NAS//NAS_drawer.glb"
         ]
       },
       {
